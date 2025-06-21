@@ -1,0 +1,14 @@
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\config\FileStorageProperties.java
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\config\WebConfig.java
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\controller\FileController.java
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\DropboxApplication.java
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\dto\FileListResponse.java
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\dto\FileMetaDataResponse.java
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\exception\DropboxException.java
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\exception\DropboxExceptionHandler.java
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\exception\DropboxExceptionType.java
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\model\FileMetadata.java
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\repository\FileRepository.java
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\service\FileService.java
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\service\FileStorageService.java
+Z:\repositories\dropbox-clone\server\src\main\java\com\dropbox\server\utils\FileUtils.java
