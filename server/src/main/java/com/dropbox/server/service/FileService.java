@@ -22,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,17 +47,13 @@ public class FileService {
         String displayFilename = resolveDisplayFilename(originalFilename);
         
         try {
-            // Calculate file checksum
             String checksum = calculateChecksum(file);
             
-            // Store file physically
             String storedFilePath = fileStorageService.storeFile(file, displayFilename);
             
-            // Detect MIME type
             String mimeType = tika.detect(file.getInputStream(), originalFilename);
             String fileExtension = FilenameUtils.getExtension(originalFilename).toLowerCase();
             
-            // Get duplicate sequence number
             int duplicateSequence = getDuplicateSequence(originalFilename, displayFilename);
             
             FileMetadata fileEntity = new FileMetadata(
@@ -95,21 +90,17 @@ public class FileService {
     @Transactional(readOnly = true)
     public FileListResponse getAllFiles(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
+
+        // Page<FileMetadata> filePage = fileRepository.findAll(pageable);
         Page<FileMetadata> filePage = fileRepository.findAllOrderByUploadTimeDesc(pageable);
         
         List<FileMetaDataResponse> files = filePage.getContent().stream()
                 .map(this::convertToMetadataResponse)
                 .collect(Collectors.toList());
         
-        // Get file statistics
-        Object[] stats = fileRepository.getFileStatistics();
-        long totalFiles = (Long) stats[0];
-        long totalSize = (Long) stats[1];
-        
         return new FileListResponse(
                 files,
-                totalFiles,
-                totalSize,
+                filePage.getNumberOfElements(),
                 page,
                 filePage.getTotalPages(),
                 filePage.getTotalElements()
@@ -232,6 +223,7 @@ public class FileService {
     }
     
     private FileMetaDataResponse convertToMetadataResponse(FileMetadata fileEntity) {
+        System.out.println("file meta data : " + fileEntity);
         return new FileMetaDataResponse(
                 fileEntity.getId(),
                 fileEntity.getDisplayFilename(),

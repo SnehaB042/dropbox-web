@@ -9,21 +9,19 @@ import lombok.Setter;
 @Setter
 public class FileListResponse {
     private List<FileMetaDataResponse> files;
-    private long totalFiles;
-    private long totalSize;
+    private long numberOfFiles;
     private int currentPage;
     private int totalPages;
-    private long totalElements;
+    private long totalFiles;
 
     public FileListResponse() {}
     
-    public FileListResponse(List<FileMetaDataResponse> files, long totalFiles, long totalSize,
-                           int currentPage, int totalPages, long totalElements) {
+    public FileListResponse(List<FileMetaDataResponse> files, long numberOfFiles,
+                           int currentPage, int totalPages, long totalFiles) {
         this.files = files;
-        this.totalFiles = totalFiles;
-        this.totalSize = totalSize;
+        this.numberOfFiles = numberOfFiles;
         this.currentPage = currentPage;
         this.totalPages = totalPages;
-        this.totalElements = totalElements;
+        this.totalFiles = totalFiles;
     }
 }

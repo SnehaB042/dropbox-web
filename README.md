@@ -6,7 +6,7 @@ git clone <your_repo>
 cd dropbox-clone
 docker-compose up --build
 ```
-for development using h2 database
+for development using h2 database :
 ```bash
 $env:SPRING_PROFILES_ACTIVE="dev"; mvn spring-boot:run
 ```

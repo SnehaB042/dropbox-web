@@ -19,7 +19,7 @@ public interface FileRepository extends JpaRepository<FileMetadata, Long> {
     
     @Query("SELECT f FROM FileMetadata f ORDER BY f.uploadTimestamp DESC")
     Page<FileMetadata> findAllOrderByUploadTimeDesc(Pageable pageable);
-    
+        
     Optional<FileMetadata> findByChecksum(String checksum);
     
     @Query("SELECT COUNT(f), COALESCE(SUM(f.fileSize), 0) FROM FileMetadata f")
