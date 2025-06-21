@@ -1,26 +1,17 @@
-# 📁 Dropbox Clone Project (Fullstack)
+# Dropbox like Web Application (Fullstack Project)
 
-This is a boilerplate fullstack project to build a Dropbox-like file upload and listing system using:
-
-- **Backend:** Java Spring Boot
-- **Frontend:** React + TypeScript + TailwindCSS
-- **Database:** PostgreSQL
-- **DevOps:** Docker & Docker Compose
-
-## 🚀 Quick Start
-
+## Quick Start
 ```bash
 git clone <your_repo>
 cd dropbox-clone
 docker-compose up --build
 ```
-
+for development using h2 database
+```bash
 $env:SPRING_PROFILES_ACTIVE="dev"; mvn spring-boot:run
+```
 
-## 📦 Features (to be implemented)
-
-- Upload files (txt, jpg, png, json)
+## Features
+- Upload files
 - View file list
 - Download files
-- File preview support
-"# dropbox-clone" 
