@@ -18,7 +18,11 @@ api.interceptors.request.use(
 
 // Response interceptor for error handling
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    console.log("response status : ", response.status);
+    // console.log("response data : ", response.data);
+    return response;
+  },
   (error) => {
     console.error('API Error:', error.response?.data || error.message);
     return Promise.reject(error);
@@ -51,8 +55,6 @@ export const fileService = {
     const response = await api.get('/list', {
       params: { page, size, sort: 'uploadTimestamp,desc', _t: new Date().getTime()},
     });
-    console.log("response status : ", response.status);
-    console.log("response data : ", response.data);
     return response.data;
   },
 
@@ -72,7 +74,7 @@ export const fileService = {
 
   // Get file content for viewing
   getFileContent: async (fileId) => {
-    const response = await api.get(`/${fileId}/download`, {
+    const response = await api.get(`/${fileId}/view`, {
       responseType: 'text',
     });
     return response.data;

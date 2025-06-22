@@ -38,8 +38,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import HomePage from './components/pages/HomePage.jsx'
-// import FileViewerPage from './pages/FileViewerPage';
-// import NotFoundPage from './pages/NotFoundPage';
+import FileViewerPage from './components/pages/FileViewerPage.jsx';
+import NotFoundPage from './components/pages/NotFoundPage.jsx';
 import Layout from './components/layout/Layout';
 import './styles/globals.css';
 
@@ -59,8 +59,8 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* <Route path="/files/:fileId/view" element={<FileViewerPage />} />
-            <Route path="*" element={<NotFoundPage />} /> */}
+            <Route path="/:fileId/view" element={<FileViewerPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Layout>
       </Router>

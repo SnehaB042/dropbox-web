@@ -11,7 +11,7 @@ const FileList = ({ files, viewMode }) => {
   const navigate = useNavigate();
 
   const handleViewFile = (fileId) => {
-    navigate(`/files/${fileId}/view`);
+    navigate(`/${fileId}/view`);
   };
 
   const handleDownloadFile = async (fileId, filename) => {

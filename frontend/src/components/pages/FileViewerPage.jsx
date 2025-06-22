@@ -1,15 +1,17 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useFileMetadata, useFileContent } from '../hooks/useFiles';
+import { useFileMetadata, useFileContent } from '../../hooks/useFiles';
 import { Download, FileText, Image, Code } from 'lucide-react';
-import { formatFileSize, formatDate } from '../utils/fileUtils';
-import { fileService } from '../services/api';
-import LoadingSpinner from '../components/ui/LoadingSpinner';
+import { formatFileSize, formatDate } from '../../utils/fileUtils';
+import { fileService } from '../../services/api';
+import LoadingSpinner from '../generic/LoadingSpinner';
 
 const FileViewerPage = () => {
   const { fileId } = useParams();
   const { data: file, isLoading: loadingMetadata, error: metadataError } = useFileMetadata(fileId);
-  const { data: content, isLoading: loadingContent } = useFileContent(fileId, file?.contentType);
+  const { data: content, isLoading: loadingContent } = useFileContent(fileId, file?.mimeType);
+
+  console.log("content in file viewer : ", content);
 
   const handleDownload = async () => {
     if (!file) return;
@@ -55,7 +57,8 @@ const FileViewerPage = () => {
       );
     }
 
-    const contentType = file.contentType;
+    const contentType = file.mimeType;
+    console.log("file in file viewer : ", file);
 
     // Text files
     if (contentType === 'text/plain') {
@@ -106,7 +109,7 @@ const FileViewerPage = () => {
           </div>
           <div className="flex justify-center">
             <img
-              src={`/api/files/${file.id}/download`}
+              src={`/api/${file.id}/download`}
               alt={file.originalFilename}
               className="max-w-full max-h-96 rounded-lg shadow-sm"
               onError={(e) => {

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useFileUpload } from '../../hooks/useFiles';
-import { X, Upload, FileText, AlertCircle, CheckCircle } from 'lucide-react';
+import { X, Upload, FileText, Image, AlertCircle, CheckCircle } from 'lucide-react';
 import { formatFileSize } from '../../utils/fileUtils';
 
 const FileUpload = ({ onClose }) => {
@@ -87,7 +87,7 @@ const FileUpload = ({ onClose }) => {
           delete newStatus[fileKey];
           return newStatus;
         });
-      }, 100);
+      }, 1000);
       
     } catch (error) {
       console.log(error);

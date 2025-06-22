@@ -89,6 +89,8 @@ public class DropboxController {
     public ResponseEntity<Resource> viewFile(
             @PathVariable Long id,
             HttpServletRequest request) {
+
+        System.out.println("view endpoint has been hit");
         
         FileMetaDataResponse metadata = fileService.getFileMetadata(id);
         

@@ -30,7 +30,7 @@ const Header = () => {
           {!isFileViewer && (
             <div className="flex items-center gap-4">
               <span className="text-sm text-gray-500">
-                Simple file storage
+                for simple file storage
               </span>
             </div>
           )}
