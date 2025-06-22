@@ -13,8 +13,6 @@ const HomePage = () => {
   const files = filesData?.files || [];
   const totalFiles = filesData?.totalFiles || 0;
 
-  console.log("filesData in home page : ", filesData);
-
   if (isLoading) {
     return (
       <div className="flex justify-center items-center py-20">

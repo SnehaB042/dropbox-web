@@ -11,8 +11,6 @@ const FileViewerPage = () => {
   const { data: file, isLoading: loadingMetadata, error: metadataError } = useFileMetadata(fileId);
   const { data: content, isLoading: loadingContent } = useFileContent(fileId, file?.mimeType);
 
-  console.log("content in file viewer : ", content);
-
   const handleDownload = async () => {
     if (!file) return;
     
@@ -58,7 +56,6 @@ const FileViewerPage = () => {
     }
 
     const contentType = file.mimeType;
-    console.log("file in file viewer : ", file);
 
     // Text files
     if (contentType === 'text/plain') {

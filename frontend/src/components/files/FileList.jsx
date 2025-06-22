@@ -6,8 +6,6 @@ import { formatFileSize, formatDate } from '../../utils/fileUtils';
 import { fileService } from '../../services/api';
 
 const FileList = ({ files, viewMode }) => {
-    console.log("files in file list ", files);
-    console.log("viewMode in file list ", viewMode);
   const navigate = useNavigate();
 
   const handleViewFile = (fileId) => {
