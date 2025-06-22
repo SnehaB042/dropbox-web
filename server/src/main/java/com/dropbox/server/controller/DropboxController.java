@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.http.CacheControl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -42,6 +43,9 @@ public class DropboxController {
     public ResponseEntity<FileListResponse> getAllFiles(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size) {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setCacheControl(CacheControl.noStore());
         
         FileListResponse response = fileService.getAllFiles(page, size);
         return ResponseEntity.ok(response);

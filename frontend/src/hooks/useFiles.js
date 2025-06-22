@@ -40,8 +40,13 @@ export const useFileUpload = () => {
     ({ file, onProgress }) => fileService.uploadFile(file, onProgress),
     {
       onSuccess: () => {
+        console.log('File uploaded successfully!');
         queryClient.invalidateQueries(['files']);
       },
+      onError: (error) => {
+        console.error('Upload failed');
+        console.error(error);
+      }
     }
   );
 };

@@ -90,9 +90,9 @@ public class FileService {
     @Transactional(readOnly = true)
     public FileListResponse getAllFiles(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-
-        // Page<FileMetadata> filePage = fileRepository.findAll(pageable);
         Page<FileMetadata> filePage = fileRepository.findAllOrderByUploadTimeDesc(pageable);
+
+        System.out.println("page list elements : " + filePage.getNumberOfElements());
         
         List<FileMetaDataResponse> files = filePage.getContent().stream()
                 .map(this::convertToMetadataResponse)

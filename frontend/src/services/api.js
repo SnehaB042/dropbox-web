@@ -49,8 +49,10 @@ export const fileService = {
   // Get all files
   getAllFiles: async (page = 0, size = 20) => {
     const response = await api.get('/list', {
-      params: { page, size, sort: 'uploadTimestamp,desc' },
+      params: { page, size, sort: 'uploadTimestamp,desc', _t: new Date().getTime()},
     });
+    console.log("response status : ", response.status);
+    console.log("response data : ", response.data);
     return response.data;
   },
 

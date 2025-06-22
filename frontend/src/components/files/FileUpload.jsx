@@ -87,7 +87,7 @@ const FileUpload = ({ onClose }) => {
           delete newStatus[fileKey];
           return newStatus;
         });
-      }, 2000);
+      }, 100);
       
     } catch (error) {
       console.log(error);

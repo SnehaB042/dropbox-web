@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { useFiles } from '../../hooks/useFiles';
 import FileUpload from '../../components/files/FileUpload.jsx';
-// import FileList from '../../components/files/FileList';
-// import LoadingSpinner from '../../components/ui/LoadingSpinner';
+import FileList from '../../components/files/FileList.jsx';
+import LoadingSpinner from '../../components/generic/LoadingSpinner.jsx';
 import { Upload, Grid, List } from 'lucide-react';
 
 const HomePage = () => {
   const [showUpload, setShowUpload] = useState(false);
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+  const [viewMode, setViewMode] = useState('list'); // 'grid' or 'list'
   const { data: filesData, isLoading, error } = useFiles();
 
-  const files = filesData?.content || [];
-  const totalFiles = filesData?.totalElements || 0;
+  const files = filesData?.files || [];
+  const totalFiles = filesData?.totalFiles || 0;
+
+  console.log("filesData in home page : ", filesData);
 
   if (isLoading) {
     return (
       <div className="flex justify-center items-center py-20">
-        {/* <LoadingSpinner /> */}
+        <LoadingSpinner />
       </div>
     );
   }
@@ -38,32 +40,30 @@ const HomePage = () => {
             My Files ({totalFiles})
           </h2>
         </div>
-        
+
         <div className="flex items-center gap-3">
           {/* View Mode Toggle */}
+          <button
+            onClick={() => setViewMode('list')}
+            className={`p-2 rounded-md transition-colors ${viewMode === 'list'
+                ? 'bg-white text-primary-600 shadow-sm'
+                : 'text-gray-500 hover:text-gray-700'
+              }`}
+          >
+            <List size={16} />
+          </button>
           <div className="flex items-center bg-gray-100 rounded-lg p-1">
             <button
               onClick={() => setViewMode('grid')}
-              className={`p-2 rounded-md transition-colors ${
-                viewMode === 'grid' 
-                  ? 'bg-white text-primary-600 shadow-sm' 
+              className={`p-2 rounded-md transition-colors ${viewMode === 'grid'
+                  ? 'bg-white text-primary-600 shadow-sm'
                   : 'text-gray-500 hover:text-gray-700'
-              }`}
+                }`}
             >
               <Grid size={16} />
             </button>
-            <button
-              onClick={() => setViewMode('list')}
-              className={`p-2 rounded-md transition-colors ${
-                viewMode === 'list' 
-                  ? 'bg-white text-primary-600 shadow-sm' 
-                  : 'text-gray-500 hover:text-gray-700'
-              }`}
-            >
-              <List size={16} />
-            </button>
           </div>
-          
+
           {/* Upload Button */}
           <button
             onClick={() => setShowUpload(true)}
@@ -77,7 +77,7 @@ const HomePage = () => {
 
       {/* Upload Modal */}
       {showUpload && (
-        <FileUpload onClose={() => setShowUpload(false)} /> 
+        <FileUpload onClose={() => setShowUpload(false)} />
       )}
 
       {/* Files Content */}
