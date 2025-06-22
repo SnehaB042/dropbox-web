@@ -40,7 +40,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import HomePage from './components/pages/HomePage.jsx'
 // import FileViewerPage from './pages/FileViewerPage';
 // import NotFoundPage from './pages/NotFoundPage';
-// import Layout from './components/layout/Layout';
+import Layout from './components/layout/Layout';
 import './styles/globals.css';
 
 const queryClient = new QueryClient({

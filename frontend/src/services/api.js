@@ -31,7 +31,7 @@ export const fileService = {
     const formData = new FormData();
     formData.append('file', file);
     
-    const response = await api.post('/files/upload', formData, {
+    const response = await api.post('/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -48,7 +48,7 @@ export const fileService = {
 
   // Get all files
   getAllFiles: async (page = 0, size = 20) => {
-    const response = await api.get('/files', {
+    const response = await api.get('/list', {
       params: { page, size, sort: 'uploadTimestamp,desc' },
     });
     return response.data;
@@ -56,13 +56,13 @@ export const fileService = {
 
   // Get file metadata
   getFileMetadata: async (fileId) => {
-    const response = await api.get(`/files/${fileId}/metadata`);
+    const response = await api.get(`/${fileId}/metadata`);
     return response.data;
   },
 
   // Download file
   downloadFile: async (fileId) => {
-    const response = await api.get(`/files/${fileId}/download`, {
+    const response = await api.get(`/${fileId}/download`, {
       responseType: 'blob',
     });
     return response;
@@ -70,7 +70,7 @@ export const fileService = {
 
   // Get file content for viewing
   getFileContent: async (fileId) => {
-    const response = await api.get(`/files/${fileId}/download`, {
+    const response = await api.get(`/${fileId}/download`, {
       responseType: 'text',
     });
     return response.data;
@@ -78,7 +78,7 @@ export const fileService = {
 
   // Delete file
   deleteFile: async (fileId) => {
-    const response = await api.delete(`/files/${fileId}`);
+    const response = await api.delete(`/${fileId}`);
     return response.data;
   },
 };

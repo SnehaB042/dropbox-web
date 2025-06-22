@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useFiles } from '../../hooks/useFiles';
-// import FileUpload from '../components/files/FileUpload';
-// import FileList from '../components/files/FileList';
-// import LoadingSpinner from '../components/ui/LoadingSpinner';
+import FileUpload from '../../components/files/FileUpload.jsx';
+// import FileList from '../../components/files/FileList';
+// import LoadingSpinner from '../../components/ui/LoadingSpinner';
 import { Upload, Grid, List } from 'lucide-react';
 
 const HomePage = () => {
@@ -16,7 +16,7 @@ const HomePage = () => {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center py-20">
-        <LoadingSpinner />
+        {/* <LoadingSpinner /> */}
       </div>
     );
   }
@@ -30,8 +30,7 @@ const HomePage = () => {
   }
 
   return (
-    <div className="space-y-6">
-      hello world
+    <div className="flex-grow space-y-6">
       {/* Action Bar */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -66,7 +65,6 @@ const HomePage = () => {
           </div>
           
           {/* Upload Button */}
-          lkdmgzflskmfg
           <button
             onClick={() => setShowUpload(true)}
             className="flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors"
@@ -79,7 +77,7 @@ const HomePage = () => {
 
       {/* Upload Modal */}
       {showUpload && (
-        <FileUpload onClose={() => setShowUpload(false)} />
+        <FileUpload onClose={() => setShowUpload(false)} /> 
       )}
 
       {/* Files Content */}
