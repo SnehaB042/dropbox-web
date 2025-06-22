@@ -3,7 +3,7 @@
 ## Quick Start
 #### for local run using h2 database :
 ```bash
-git clone <your_repo>
+git clone https://github.com/SnehaB042/dropbox-web.git
 ```
 get the server running using the following commands : 
 ```bash
@@ -22,7 +22,7 @@ you can refer to wiki in this repo for ui screenshots
 
 #### {WIP} for prod run using postgresql and docker : 
 ```bash
-git clone <repo_link>
+git clone https://github.com/SnehaB042/dropbox-web.git
 cd dropbox-clone
 docker-compose up --build
 ```
