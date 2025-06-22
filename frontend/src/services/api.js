@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const API_BASE_URL = '/api';
 
 const api = axios.create({
@@ -20,7 +21,7 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => {
     console.log("response status : ", response.status);
-    // console.log("response data : ", response.data);
+    console.log("response data : ", response.data);
     return response;
   },
   (error) => {

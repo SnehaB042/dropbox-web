@@ -18,9 +18,11 @@ npm install
 npm run build
 npm run dev
 ```
+you can refer to wiki in this repo for ui screenshots
+
 #### {WIP} for prod run using postgresql and docker : 
 ```bash
-git clone <your_repo>
+git clone <repo_link>
 cd dropbox-clone
 docker-compose up --build
 ```
